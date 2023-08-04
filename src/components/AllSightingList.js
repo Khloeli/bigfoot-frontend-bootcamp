@@ -6,32 +6,25 @@ import { BACKEND_URL } from "../constants";
 function AllSightingList() {
   const [data, setData] = useState(null);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/sightings`)
-  //     .then((response) => response.json())
-  //     .then((dataArray) => {
-  //       setData(dataArray);
-  //       console.log(dataArray);
-  //     })
-  //     .catch((error) => console.error("Error:", error));
-  // }, []); // Empty array means this effect runs once on mount
-
   // Axios automatically parses the response data to JSON format, so there is no need to explicitly call response.json()
   useEffect(() => {
-    axios.get(`${BACKEND_URL}`).then((response) => {
+    axios.get(`${BACKEND_URL}/sightings`).then((response) => {
       setData(response.data);
+      // console.log(response.data);
     });
-    // Only run this effect on component mount
-  }, []);
+  }, [data]);
 
   return (
     <div className="App">
+      <Link to="/sightings/new">Record New Sighting</Link>
+      <br />
+      <br />
       {data
-        ? data.map((item, index) => (
-            <Link to={`/sightings/${index}`} key={index}>
+        ? data.map((item) => (
+            <Link to={`/sightings/${item.id}`} key={item.id}>
               <div>
                 {" "}
-                Year: {item.YEAR} - Season: {item.SEASON} - State: {item.STATE}
+                {item.date.split("T")[0]} ~ {item.location}
               </div>
             </Link>
           ))

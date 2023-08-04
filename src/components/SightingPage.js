@@ -8,9 +8,9 @@ function SightingPage() {
   const [sighting, setSighting] = useState();
 
   useEffect(() => {
-    axios.get(`${BACKEND_URL}/${sightingIndex}`).then((response) => {
+    axios.get(`${BACKEND_URL}/sightings/${sightingIndex}`).then((response) => {
       setSighting(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, [sightingIndex]);
 
@@ -22,17 +22,19 @@ function SightingPage() {
 
   return (
     <div className="App">
-      {" "}
-      <div>
-        {sighting &&
-          Object.entries(sighting).map(([key, value]) => (
-            <div key={key}>
-              {key}: {value}
-            </div>
-          ))}
-      </div>
+      {sighting && (
+        <div>
+          <div>Date: {sighting.date}</div>
+          <div>Location:{sighting.location}</div>
+          <div>Notes:{sighting.notes}</div>
+        </div>
+      )}
       <br />
       <Link to={`/`}>Back to All Sightings</Link>
+      <br />
+      <br />
+
+      <Link to={`/sightings/${sightingIndex}/edit`}>Edit Sighting</Link>
     </div>
   );
 }
