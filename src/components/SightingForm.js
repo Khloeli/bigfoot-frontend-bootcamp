@@ -62,12 +62,8 @@ function SightingForm() {
           placeholder="Bear spotted"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-      <Button onClick={handleBack} className="close-button">
-        Back
-      </Button>
+      <Button type="submit">Submit</Button>
+      <Button onClick={handleBack}>Back</Button>
     </Form>
   );
 }

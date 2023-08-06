@@ -3,7 +3,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../constants";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function EditSightingForm() {
   // const [sightingIndex, setSightingIndex] = useState();

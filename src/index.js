@@ -7,6 +7,7 @@ import AllSightingList from "./components/AllSightingList";
 import SightingPage from "./components/SightingPage";
 import SightingForm from "./components/SightingForm";
 import EditSightingForm from "./components/EditSightingForm";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
